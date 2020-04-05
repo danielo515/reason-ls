@@ -1,0 +1,13 @@
+(executable
+ (name reason_ls_app)
+ (libraries base stdio cmdliner console.lib lwt.unix reason-ls.lib)
+ (flags -open Base)
+ (modules (:standard)))
+
+(install
+ (section bin)
+ (package reason-ls)
+ (files
+  (reason_ls_app.exe as reason-ls)))
+
+(include_subdirs unqualified)

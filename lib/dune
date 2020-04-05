@@ -1,0 +1,8 @@
+(library
+ (name Reason_ls)
+ (public_name reason-ls.lib)
+ (modules (:standard))
+ (libraries base stdio)
+ (flags -open Base))
+
+(include_subdirs unqualified)
