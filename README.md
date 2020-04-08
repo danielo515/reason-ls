@@ -33,9 +33,9 @@ curl -fsSL https://github.com/danielo515/reason-ls/raw/master/script/install.sh 
 
 ## Usage
 
-### `reason-ls hello NAME`
+### `reason-ls FOLDER`
 
-Greets the name given in argument.
+lists FOLDER as a tree
 
 ## Contributing
 
