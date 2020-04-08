@@ -33,6 +33,7 @@ let compile_tree tree =
     in
     loop "" tree
 
+(* same as fold_right but telling to ~f when the item is the last in the list *)
 let fold_right arr ~init ~f =
     snd @@ 
     Array.fold_right arr ~init:(true, init) ~f: (fun i (is_last,acc) -> (false, f i acc is_last))

@@ -9,10 +9,9 @@ let defaultCmd = {
   );
 
   Reason_ls.((     
-  Term.(const(dir =>
-    Dir.traverse(dir) 
-    |> Dir.compile_tree
-    |> Console.log) $ path),
+  Term.(const(
+    dir => dir ++ "\n" ++ (Dir.traverse(dir) |> Dir.compile_tree) |> Console.log) 
+    $ path),
     Term.info(
       "reason-ls",
       ~doc,
