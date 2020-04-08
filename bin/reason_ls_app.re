@@ -10,10 +10,9 @@ let defaultCmd = {
 
   Reason_ls.((     
   Term.(const(dir =>
-    Dir.traverse(dir) |> List.fold(~init="", ~f=(a,b) => a ++ Dir.string_of_file(b) ++ "\n")
-    // Utils.dir_contents(dir)
-    // |> List.fold(~init="", ~f=(acc,b) => acc ++ Utils.renderFile(b) ++ "\n")
-    |> Console.debug) $ path),
+    Dir.traverse(dir) 
+    |> Dir.compile_tree
+    |> Console.log) $ path),
     Term.info(
       "reason-ls",
       ~doc,
