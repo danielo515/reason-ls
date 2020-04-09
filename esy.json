@@ -18,6 +18,7 @@
     "ocaml": ">= 4.6.0"
   },
   "devDependencies": {
+    "@opam/ocamlformat": "0.14.0",
     "@opam/dune-release": "*",
     "@opam/merlin": "*",
     "@opam/odoc": "*",
