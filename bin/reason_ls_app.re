@@ -1,4 +1,5 @@
 open Cmdliner;
+open Reason_ls;
 
 let defaultCmd = {
   let doc = "list directory as a tree, reasonml implementaion";
@@ -16,25 +17,22 @@ let defaultCmd = {
       & info(["c", "charset"], ~doc="charset to use")
     );
 
+  let run = (dir, charset) => {
+    let (p, m, l) =
+      switch (charset) {
+      | "ascii" => ("|", "|--", "`--")
+      | _ => ("│", "├", "└")
+      };
+    module R =
+      Dir.RENDER({
+        let pipe = p;
+        let middle = m;
+        let last = l;
+      });
+    dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log;
+  };
   Reason_ls.(
-    Term.(
-      const((dir, charset) => {
-        let (p, m, l) =
-          switch (charset) {
-          | "ascii" => ("|", "|--", "`--")
-          | _ => ("│", "├", "└")
-          };
-        module R =
-          Dir.RENDER({
-            let pipe = p;
-            let middle = m;
-            let last = l;
-          });
-        dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log;
-      })
-      $ path
-      $ charset
-    ),
+    Term.(const(run) $ path $ charset),
     Term.info(
       "reason-ls",
       ~doc,
