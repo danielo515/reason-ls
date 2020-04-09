@@ -10,5 +10,5 @@ let test_version = ({expect}) => {
 };
 
 describe("Integration test --version", ({test, _}) => {
-  test("can display the version", test_version);
+  test("can display the version", test_version)
 });

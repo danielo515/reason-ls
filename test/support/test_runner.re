@@ -6,5 +6,4 @@
     We separate the test runner binary and the test library so that we can link
     all the modules in the library when compiling. This allows us to discover
     all the test automatically, instead of having to manually include them. */
-
 Reason_ls_test.Test_framework.cli();

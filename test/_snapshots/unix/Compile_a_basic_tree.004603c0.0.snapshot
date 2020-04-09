@@ -1,0 +1,8 @@
+Compile a basic tree › creates correct string representation
+|--A
+|`--A1
+|--B
+||--B1
+|`--B2
+`--C
+

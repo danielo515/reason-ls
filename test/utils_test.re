@@ -4,7 +4,7 @@ open Reason_ls;
 /** Test suite for the Utils module. */
 
 let test_hello_with_name = (name, {expect}) => {
-  let greeting = "Hello" ++ name ++ "!"  //TODO fix
+  let greeting = "Hello " ++ name ++ "!"; //TODO fix
   let expected = "Hello " ++ name ++ "!";
   expect.string(greeting).toEqual(expected);
 };

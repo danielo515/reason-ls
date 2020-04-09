@@ -18,7 +18,6 @@ let exe_path =
   |> Lwt.map(String.strip)
   |> Lwt_main.run;
 
-
 /** Run reason-ls binary with the given arguments and return the standard output. */
 let run = args => {
   let arguments = Array.append([|exe_path|], args);
