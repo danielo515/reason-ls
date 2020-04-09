@@ -15,9 +15,9 @@ let defaultCmd = {
       const(dir => {
         module R =
           Dir.RENDER({
-            let pipe = "⎥";
-            let last = "└";
+            let pipe   = "│";
             let middle = "├";
+            let last   = "└";
           });
         dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log;
       })
