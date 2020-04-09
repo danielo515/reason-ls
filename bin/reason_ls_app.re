@@ -9,19 +9,29 @@ let defaultCmd = {
       & pos(0, some(string), None)
       & info([], ~docv="PATH", ~doc="the path")
     );
+  let charset = Arg.(
+    value &
+    opt(string,"unicode")
+    & info(["c","charset"], ~doc="charset to use")
+  )
 
   Reason_ls.(
     Term.(
-      const(dir => {
+      const((dir,charset) => {
+        let (p, m, l) =
+        switch ( charset ) {
+        | "ascii" => ("|", "|--", "`--");
+        | _ =>  ("│","├","└")
+        };
         module R =
           Dir.RENDER({
-            let pipe = "│";
-            let middle = "├";
-            let last = "└";
+            let pipe = p;
+            let middle = m;
+            let last = l;
           });
         dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log;
       })
-      $ path
+      $ path $ charset
     ),
     Term.info(
       "reason-ls",
