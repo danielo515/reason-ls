@@ -4,7 +4,7 @@ open Reason_ls;
 /** Integration test suite for the hello command. */
 
 let test_ls_tree = ({expect}) => {
-  let output = Test_utils.run([|"./test/Dummy"|]);
+  let output = Test_utils.run([|"./test/Dummy", "-c","ascii"|]);
   let generated = String.strip(output);
   expect.string(generated).toMatchSnapshot();
 };
