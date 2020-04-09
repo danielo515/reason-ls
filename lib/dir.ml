@@ -1,38 +1,46 @@
+module type CFG = sig 
+    val pipe: string
+    val last: string
+    val middle: string
+end 
+
 type file = File of string * int * bool| Dir of string * int * bool
+module RENDER (Conf:CFG) = struct
+    include Conf
+    let string_of_file = function
+        | Dir (name, depth, is_last) 
+        | File (name,depth, is_last) -> (if(is_last) then last else middle) ^ name 
 
-let string_of_file = function
-| Dir (name, depth, is_last) 
-| File (name,depth, is_last) -> (if(is_last) then "└ " else "├ ") ^ name 
+    let depth_of_file = function
+        | Dir (_, depth, _) | File (_,depth, _) -> depth
 
-let depth_of_file = function
-| Dir (_, depth, _) | File (_,depth, _) -> depth
+    let render_row file below_files =
+        let len = depth_of_file file in
+        let segments = Array.create ~len " " in
+        let rec loop cur_depth remain = 
+        if cur_depth = 0 then segments
+        else match remain with
+        | f::tail -> 
+            let depth = depth_of_file f in
+            if depth < cur_depth then begin 
+                segments.(depth_of_file f) <- pipe;
+                loop depth tail
+                end
+            else loop cur_depth tail
+        | [] -> segments
+        in
+        loop len below_files |> String.concat_array
 
-let render_row file below_files =
-    let len = depth_of_file file in
-    let segments = Array.create ~len " " in
-    let rec loop cur_depth remain = 
-    if cur_depth = 0 then segments
-    else match remain with
-    | f::tail -> 
-        let depth = depth_of_file f in
-        if depth < cur_depth then begin 
-            segments.(depth_of_file f) <- "│";
-            loop depth tail
-            end
-        else loop cur_depth tail
-    | [] -> segments
-    in
-    loop len below_files |> String.concat_array
+    let compile_tree tree = 
+        let rec loop res = function
+        | f::tail -> 
+            let res =  res ^ render_row f tail ^ string_of_file f ^ "\n" in 
+            loop res tail
+        | [] -> res
+        in
+        loop "" tree
 
-let compile_tree tree = 
-    let rec loop res = function
-    | f::tail -> 
-        let res =  res ^ render_row f tail ^ string_of_file f ^ "\n" in 
-        loop res tail
-    | [] -> res
-    in
-    loop "" tree
-
+end
 (* same as fold_right but telling to ~f when the item is the last in the list *)
 let fold_right arr ~init ~f =
     snd @@ 

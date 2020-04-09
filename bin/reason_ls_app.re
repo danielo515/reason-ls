@@ -10,7 +10,11 @@ let defaultCmd = {
 
   Reason_ls.((     
   Term.(const(
-    dir => dir ++ "\n" ++ (Dir.traverse(dir) |> Dir.compile_tree) |> Console.log) 
+    dir => {
+      module R = Dir.RENDER({ let pipe="⎥"; let last="└"; let middle="├"; });
+      dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log 
+    }
+    ) 
     $ path),
     Term.info(
       "reason-ls",
