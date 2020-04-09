@@ -4,8 +4,6 @@ let man = [
   `S(Manpage.s_common_options),
   `S(Manpage.s_environment),
   `P("These environment variables affect the execution of $(mname):"),
-  `S("MORE HELP"),
-  `P("Use `$(mname) $(i,COMMAND) --help' for help on a single command."),
   `Noblank,
   `S(Manpage.s_bugs),
   `P("File bug reports at https://github.com/danielo515/reason-ls"),
