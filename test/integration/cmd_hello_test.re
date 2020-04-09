@@ -10,5 +10,5 @@ let test_hello_world = ({expect}) => {
 };
 
 describe("Integration test hello", ({test, _}) => {
-  test("can display hello world", test_hello_world);
+  test("can display hello world", test_hello_world)
 });
