@@ -5,7 +5,7 @@ let defaultCmd = {
 
   let path = Arg.( required 
   & pos(0, some( string ),None) 
-  & info([],~docv="path", ~doc="the path")
+  & info([],~docv="PATH", ~doc="the path")
   );
 
   Reason_ls.((     
@@ -13,8 +13,7 @@ let defaultCmd = {
     dir => {
       module R = Dir.RENDER({ let pipe="⎥"; let last="└"; let middle="├"; });
       dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree) |> Console.log 
-    }
-    ) 
+    }) 
     $ path),
     Term.info(
       "reason-ls",
@@ -33,6 +32,7 @@ let argv =
   |> Array.map(~f=arg =>
        switch (arg) {
        | "-v" => "--version"
+       | "-h" => "--help"
        | x => x
        }
      );
