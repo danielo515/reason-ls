@@ -69,7 +69,7 @@ const pkgJson = {
     postinstall: "node postinstall.js"
   },
   bin: {
-    reason-ls: "reason-ls"
+    "reason-ls": "reason-ls"
   },
   files: [
     "platform-windows-x64/",
