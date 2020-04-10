@@ -60,8 +60,8 @@ jobs:
       - name: Build subst changes
         run: esy dune build
 
-      - name: Run tests
-        run: esy test
+      # - name: Run tests
+        # run: esy test
 
       - name: Export dependencies
         run: esy export-dependencies
