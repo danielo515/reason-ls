@@ -1,8 +1,7 @@
 exception Missing_env_var(string);
 
-let noFile = err => 
-  Str.regexp_case_fold(".*no such file.*") 
-  |> Str.string_match(_, err,0);
+let noFile = err =>
+  Str.regexp_case_fold(".*no such file.*") |> Str.string_match(_, err, 0);
 
 let handle_errors = fn =>
   try(fn()) {

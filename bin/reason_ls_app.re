@@ -30,7 +30,7 @@ let defaultCmd = {
         let last = l;
       });
     let run_cmd = () => dir ++ "\n" ++ (Dir.traverse(dir) |> R.compile_tree);
-    run_cmd |> Errors.handle_errors|> Console.log;
+    run_cmd |> Errors.handle_errors |> Console.log;
   };
   Reason_ls.(
     Term.(const(run) $ path $ charset),
