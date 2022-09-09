@@ -21,7 +21,7 @@
     "@opam/ocamlformat": "^0.24.1",
     "@opam/dune-release": "*",
     "@opam/merlin": "*",
-    "@opam/odoc": "*",
+    "@opam/odoc": "^2.1.1",
     "@opam/utop": "*",
     "@reason-native/rely": "*",
     "refmterr": "*",
