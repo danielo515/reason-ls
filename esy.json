@@ -15,7 +15,7 @@
     "@opam/reason": "*",
     "@opam/stdio": "*",
     "@reason-native/console": "^0.1.0",
-    "ocaml": "~4.12.0"
+    "ocaml": "~4.11.0"
   },
   "devDependencies": {
     "@opam/ocamlformat": "0.14.0",
