@@ -15,7 +15,7 @@
     "@opam/reason": "*",
     "@opam/stdio": "*",
     "@reason-native/console": "^0.1.0",
-    "ocaml": "^4.12.0"
+    "ocaml": ">= 4.8.0"
   },
   "devDependencies": {
     "@opam/ocamlformat": "^0.24.1",
@@ -24,7 +24,8 @@
     "@opam/odoc": "^2.0.0",
     "@opam/utop": "*",
     "@reason-native/rely": "*",
-    "refmterr": "*"
+    "refmterr": "*",
+    "ocaml": "~4.12.0"
   },
   "scripts": {
     "start": "esy x reason-ls",
