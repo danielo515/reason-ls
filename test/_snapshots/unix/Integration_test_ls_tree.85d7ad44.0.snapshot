@@ -1,18 +1,20 @@
 Integration test ls-tree › renders the test directory
 ./test/Dummy
+|--A
+||--A2
+|`--A1
+| `--A1_1
+|--README.md
 |--C
+||--C3
 ||--C4
 ||`--C4_1
-||--C1
 ||--C2
-|`--C3
-|--A
-||--A1
-||`--A1_1
-|`--A2
-|--B
-|`--B1
-| `--B1_1
-|  |--B1_1_2
-|  `--B1_1_1
-`--README.md
+|`--C1
+`--B
+ `--B1
+  `--B1_1
+   |--B1_1_2
+   `--B1_1_1
+
+
