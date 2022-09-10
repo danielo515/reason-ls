@@ -1,7 +1,7 @@
 (library
  (name reason_ls_test)
  (flags -open Base -linkall -g -w -9)
- (libraries base lwt.unix rely.lib reason-ls.lib)
+ (libraries base lwt.unix rely.lib reason-ls.lib console.lib)
  (modules
   (:standard \ test_runner)))
 
