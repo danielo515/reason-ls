@@ -1,5 +1,5 @@
 {
-  "checksum": "d24c4b81ce7e7106cf84024e25560117",
+  "checksum": "983de48ad0c1bb19a1cdb016b1326581",
   "root": "reason-ls@link-dev:./esy.json",
   "node": {
     "refmterr@3.3.2@d41d8cd9": {
@@ -38,7 +38,7 @@
       ],
       "devDependencies": [
         "refmterr@3.3.2@d41d8cd9", "@reason-native/rely@3.2.1@d41d8cd9",
-        "@opam/utop@opam:2.10.0@9af1bb18", "@opam/odoc@opam:1.5.3@122d8c31",
+        "@opam/utop@opam:2.10.0@9af1bb18",
         "@opam/ocamlformat@opam:0.14.0@55720a18",
         "@opam/merlin@opam:3.8.0@4ff212aa",
         "@opam/dune-release@opam:1.6.2@09bbc5ae"

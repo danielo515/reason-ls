@@ -3,9 +3,10 @@
   "esy": {
     "build": "dune build -p #{self.name}",
     "buildDev": "refmterr dune build --root . --only-package #{self.name}",
-    "install":
-      "esy-installer #{self.target_dir / 'default' / self.name '.install'}",
-    "buildEnv": { "ODOC_SYNTAX": "re" }
+    "install": "esy-installer #{self.target_dir / 'default' / self.name '.install'}",
+    "buildEnv": {
+      "ODOC_SYNTAX": "re"
+    }
   },
   "dependencies": {
     "@opam/base": "*",
@@ -21,7 +22,6 @@
     "@opam/ocamlformat": "0.14.0",
     "@opam/dune-release": "*",
     "@opam/merlin": "*",
-    "@opam/odoc": "^2.1.1",
     "@opam/utop": "*",
     "@reason-native/rely": "*",
     "refmterr": "*"
