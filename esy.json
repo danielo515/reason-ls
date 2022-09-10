@@ -19,9 +19,10 @@
     "ocaml": "~4.8.0"
   },
   "devDependencies": {
-    "@opam/ocamlformat": "0.14.0",
+    "@opam/ocamlformat": "~0.23.0",
     "@opam/dune-release": "*",
     "@opam/merlin": "*",
+    "@opam/odoc": "^2.1.1",
     "@opam/utop": "*",
     "@reason-native/rely": "*",
     "refmterr": "*"
