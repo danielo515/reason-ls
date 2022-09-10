@@ -5,8 +5,8 @@ open Reason_ls;
 
 let test_ls_tree = ({expect}) => {
   let output = Test_utils.run([|"./test/Dummy", "-c", "ascii"|]);
-  let generated = output; // String.strip(output);
-  Console.log(("rabo", output));
+  let generated = String.strip(output);
+  Console.log("\nstart'" ++ generated ++ "'end");
   expect.string(generated).toMatchSnapshot();
 };
 
