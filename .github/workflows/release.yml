@@ -69,6 +69,7 @@ jobs:
 
       - name: Get binary path
         id: get_binary_path
+        if: false
         shell: bash
         run: |
           # from https://stackoverflow.com/a/24848739/617787
@@ -79,11 +80,17 @@ jobs:
           echo "BINARY_PATH: $BINARY_PATH"
           echo "##[set-output name=path;]$BINARY_PATH"
 
+      - name: Another way to get binary path
+        shell: bash
+        run: |
+          echo "binary_path=$(esy x which reason-ls)" >> $GITHUB_ENV
+
       - name: Upload artifacts for ${{ matrix.os }}
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}
-          path: ${{ steps.get_binary_path.outputs.path }}
+          # path: ${{ steps.get_binary_path.outputs.path }}
+          path: ${{ env.binary_path }}
 
   publish:
     needs: build
@@ -134,6 +141,7 @@ jobs:
           # cd _release/platform-windows-x64
           # zip -r ../../reason-ls-windows-x64.zip .
           # cd ../..
+
       - name: Compute the release tag
         run: |
           echo "release_tag=v`date '+%Y-%m-%d'`" >> $GITHUB_ENV
