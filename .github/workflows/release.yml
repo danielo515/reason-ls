@@ -1,9 +1,9 @@
 name: Release
 
-on: 
+on:
   workflow_dispatch:
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
   build:
@@ -62,7 +62,7 @@ jobs:
         run: esy dune build
 
       # - name: Run tests
-        # run: esy test
+      # run: esy test
 
       - name: Export dependencies
         run: esy export-dependencies
@@ -84,7 +84,6 @@ jobs:
         with:
           name: ${{ matrix.os }}
           path: ${{ steps.get_binary_path.outputs.path }}
-
 
   publish:
     needs: build
@@ -136,27 +135,27 @@ jobs:
           # zip -r ../../reason-ls-windows-x64.zip .
           # cd ../..
 
-      - name: Upload reason-ls-darwin-x64.zip to Github release 
+      - name: Upload reason-ls-darwin-x64.zip to Github release
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: reason-ls-darwin-x64.zip
           asset_name: reason-ls-darwin-x64.zip
           asset_content_type: application/gzip
 
-      - name: Upload reason-ls-linux-x64.zip to Github release 
+      - name: Upload reason-ls-linux-x64.zip to Github release
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: reason-ls-linux-x64.zip
           asset_name: reason-ls-linux-x64.zip
           asset_content_type: application/gzip
 
-      # - name: Upload spin-windows-x64.zip to Github release 
+      # - name: Upload spin-windows-x64.zip to Github release
       #   uses: actions/upload-release-asset@v1.0.1
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
