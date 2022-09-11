@@ -8,7 +8,8 @@ let test_version = ({expect}) => {
   let generated = String.strip(version);
   expect.string(generated).toEqual("%%VERSION%%");
 };
-
+/**
 describe("Integration test --version", ({test, _}) => {
   test("can display the version", test_version)
 });
+*/;
