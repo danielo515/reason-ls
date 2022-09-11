@@ -20,10 +20,10 @@ jobs:
       - name: Fetch git tags
         run: git fetch --tags --force
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
           registry-url: "https://registry.npmjs.org"
 
       - name: Set macOS deployment target
@@ -96,37 +96,10 @@ jobs:
       - name: Fetch git tags
         run: git fetch --tags --force
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-
-      - name: Cache esy dependencies
-        uses: actions/cache@v1
-        id: cache
-        with:
-          path: _export
-          key: ${{ runner.OS }}-build-${{ hashFiles('esy.lock/index.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-
-      - name: Install esy
-        run: npm install -g esy@latest
-
-      - name: Import dependencies
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: esy import-build _export/*
-
-      - name: Install dependencies
-        run: esy install
-
-      - name: Build
-        run: esy build --release
-
-      - name: Substitute watermarks
-        run: esy dune subst
+          node-version: 14.x
 
       - name: Make NPM release skeleton
         run: node script/release-make-skeleton.js
