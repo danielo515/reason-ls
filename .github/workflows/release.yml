@@ -134,9 +134,17 @@ jobs:
           # cd _release/platform-windows-x64
           # zip -r ../../reason-ls-windows-x64.zip .
           # cd ../..
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.event.release.upload_url == ''
+        with:
+          files: |
+            reason-ls-darwin-x64.zip
+            reason-ls-linux-x64.zip
 
       - name: Upload reason-ls-darwin-x64.zip to Github release
         uses: actions/upload-release-asset@v1.0.1
+        if: github.event.release.upload_url != ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -147,6 +155,7 @@ jobs:
 
       - name: Upload reason-ls-linux-x64.zip to Github release
         uses: actions/upload-release-asset@v1.0.1
+        if: github.event.release.upload_url != ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
