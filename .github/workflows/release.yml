@@ -135,10 +135,15 @@ jobs:
           # cd _release/platform-windows-x64
           # zip -r ../../reason-ls-windows-x64.zip .
           # cd ../..
+      - name: Compute the release tag
+        run: |
+          echo "release_tag=v`date '+%Y-%m-%d'`" >> $GITHUB_ENV
+         
       - name: Release
         uses: softprops/action-gh-release@v1
         if: github.event.release.upload_url == ''
         with:
+          tag_name: ${{ env.release_tag }}
           files: |
             reason-ls-darwin-x64.zip
             reason-ls-linux-x64.zip
