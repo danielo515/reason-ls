@@ -14,4 +14,4 @@ let test_ls_tree = ({expect}) => {
 describe("Integration test ls-tree", ({test, _}) => {
   test("renders the test directory", test_ls_tree)
 });
-*/
+*/;
