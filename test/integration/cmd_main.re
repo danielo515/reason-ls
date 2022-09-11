@@ -10,6 +10,8 @@ let test_ls_tree = ({expect}) => {
   expect.string(generated).toMatchSnapshot();
 };
 
+/**
 describe("Integration test ls-tree", ({test, _}) => {
   test("renders the test directory", test_ls_tree)
 });
+*/
