@@ -72,7 +72,6 @@ jobs:
         shell: bash
         run: |
           # from https://stackoverflow.com/a/24848739/617787
-          set -ex
           s=$(pwd); d=$(dirname $(esy x which reason-ls));
           while [ "${d#$s/}" == "${d}" ]
           do s=$(dirname $s);b="../${b}"; done; 
@@ -138,7 +137,7 @@ jobs:
       - name: Compute the release tag
         run: |
           echo "release_tag=v`date '+%Y-%m-%d'`" >> $GITHUB_ENV
-         
+
       - name: Release
         uses: softprops/action-gh-release@v1
         if: github.event.release.upload_url == ''
